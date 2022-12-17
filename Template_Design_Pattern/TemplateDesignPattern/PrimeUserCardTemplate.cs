@@ -5,12 +5,6 @@ namespace Template_Design_Pattern.TemplateDesignPattern
 {
     public class PrimeUserCardTemplate : UserCardTemplate
     {
-        protected AppUser AppUser { get; set; }
-
-        public void SetUser(AppUser appUser)
-        {
-            AppUser = appUser;
-        }
 
         protected override string SetFooter()
         {

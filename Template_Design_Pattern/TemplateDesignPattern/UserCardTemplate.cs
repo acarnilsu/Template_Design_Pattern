@@ -5,11 +5,17 @@ namespace Template_Design_Pattern.TemplateDesignPattern
 {
     public abstract class UserCardTemplate
     {
-        protected AppUser AppUser { get; set; }
+        protected AppUser AppUser { get; set; }  // protected --> kullandığım classlar da(referans aldıklarım) bunu görüyor olacak
+
+        public void SetUser(AppUser appUser)
+        {
+            AppUser = appUser;
+        }
+
 
         public string Build()
         {
-            var sb = new StringBuilder();
+            var sb = new StringBuilder();       //String builder --> Metinsel ifadeleri birleştirmek
             sb.Append("<div classs='card'>");
             sb.Append(SetImage());
             sb.Append($@"<div class='card-body'>

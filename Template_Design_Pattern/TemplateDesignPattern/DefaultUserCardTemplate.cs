@@ -1,6 +1,6 @@
 ﻿namespace Template_Design_Pattern.TemplateDesignPattern
 {
-    public class DefaultUserCardTemplate : UserCardTemplate
+    public class DefaultUserCardTemplate : UserCardTemplate    //Unautorize kullanıcı
     {
         protected override string SetFooter()
         {
