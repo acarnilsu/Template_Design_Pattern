@@ -1,6 +1,31 @@
-﻿
+﻿@model List<AppUser>
+
 @{
-    Layout = null;
+    int count = 0;
 }
+
+    <br />
+
+    @foreach (var item in Model)
+    {
+        count++;
+        if (count == 1 || count % 3 == 1)
+        {
+
+            @Html.Raw("<div class='row row-cols-1 row-cols-md-3 g-4 mt-5'>")
+            //html.raw html kodlarını yazmamıza yarıyor.
+        }
+
+        <div class="col-lg-4">
+            <user-card app-user="@item"></user-card>
+        </div>
+
+        if (count % 3 == 0)
+        {
+            @Html.Raw("</div>")
+        }
+
+
+    }
 
 

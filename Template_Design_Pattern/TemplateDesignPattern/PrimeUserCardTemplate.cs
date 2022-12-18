@@ -9,15 +9,15 @@ namespace Template_Design_Pattern.TemplateDesignPattern
         protected override string SetFooter()
         {
             var sb = new StringBuilder();
-            sb.Append("<a href='#' class='btn btn-warning'>Profili Gör</a>");
-            sb.Append("<a href='#' class='btn btn-danger'>Mesaj Gönder</a>");
-            sb.Append("<a href='#' class='btn btn-success'>Bağış Yap</a>");
+            sb.Append("<a href='#' style='float:left; margin-left:5px;' class='btn btn-sm  btn-warning'>Profili Gör</a>");
+            sb.Append("<a href='#' style='float:left; margin-left:5px;' class='btn btn-sm ms-2 btn-danger'>Mesaj Gönder</a>");
+            sb.Append("<a href='#' style='float:left; margin-left:5px;' class='btn btn-sm ms-2 btn-success'>Bağış Yap</a>");
             return sb.ToString();
         }
 
         protected override string SetImage()
         {
-            return $"<img class='car-img-top' src='{AppUser.Image}' style='width:80px; height:80px;'>";
+            return $"<img class='car-img-top' src='{AppUser.Image}' style='width:150px; height:150px;'>";
         }
     }
 }

@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Template_Design_Pattern.DAL;
+using Template_Design_Pattern.DAL.Entities;
 
 namespace Template_Design_Pattern
 {
@@ -23,6 +25,20 @@ namespace Template_Design_Pattern
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<Context>();
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.User.AllowedUserNameCharacters =
+            "abcçdefghiýjklmnoöpqrstuüvwxyzABCÇDEFGHIÝJKLMNOÖPQRSTUÜVWXYZ0123456789-_";
+                options.User.RequireUniqueEmail = true;
+
+                options.Password.RequiredLength = 4;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+
+            }).AddEntityFrameworkStores<Context>();
             services.AddControllersWithViews();
         }
 
@@ -41,7 +57,7 @@ namespace Template_Design_Pattern
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -50,7 +66,7 @@ namespace Template_Design_Pattern
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Default}/{action=Index}/{id?}");
             });
         }
     }

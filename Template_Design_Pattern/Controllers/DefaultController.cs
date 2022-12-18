@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 using Template_Design_Pattern.DAL.Entities;
 
 namespace Template_Design_Pattern.Controllers
@@ -14,9 +16,9 @@ namespace Template_Design_Pattern.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var values = _userManager.Users.ToList();
+            var values =await _userManager.Users.ToListAsync();
             return View(values);
         }
     }
